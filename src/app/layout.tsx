@@ -51,7 +51,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    creator: "@sharafat_dev",
   },
   robots: {
     index: true,
@@ -83,7 +82,7 @@ const jsonLd = {
   description: siteConfig.description,
   url: siteConfig.url,
   email: siteConfig.email,
-  sameAs: [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.x],
+  sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
   knowsAbout: [
     "Laravel",
     "PHP",
