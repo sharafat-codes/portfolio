@@ -1,0 +1,61 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2180 >>
+stream
+BT /F2 26 Tf 60 770 Td (Sharafat Ali) Tj ET
+BT /F1 13 Tf 60 748 Td (Full-Stack Software Engineer) Tj ET
+BT /F1 10 Tf 60 730 Td (sharafat.codes@gmail.com   |   Remote, Worldwide   |   sharafatali.dev) Tj ET
+BT /F2 12 Tf 60 700 Td (SUMMARY) Tj ET
+BT /F1 10 Tf 60 684 Td (Full-stack engineer with 2+ years building production SaaS platforms, marketplaces,) Tj ET
+BT /F1 10 Tf 60 670 Td (AI applications, e-commerce, and business automation used by real businesses.) Tj ET
+BT /F2 12 Tf 60 642 Td (CORE SKILLS) Tj ET
+BT /F1 10 Tf 60 626 Td (Backend: Laravel, PHP, Node.js, NestJS, REST APIs) Tj ET
+BT /F1 10 Tf 60 612 Td (Frontend: Vue.js, React, Next.js, TypeScript, Inertia.js) Tj ET
+BT /F1 10 Tf 60 598 Td (Mobile: React Native   |   Database: MySQL, PostgreSQL) Tj ET
+BT /F1 10 Tf 60 584 Td (Integrations: Stripe, PayPal, Flutterwave, Paystack, Shopify, Klaviyo) Tj ET
+BT /F2 12 Tf 60 556 Td (SELECTED PROJECTS) Tj ET
+BT /F2 10 Tf 60 540 Td (SecureGrades - Digital educational e-commerce platform) Tj ET
+BT /F1 10 Tf 60 527 Td (Laravel, Inertia, Vue, MySQL, Stripe. Secure checkout and digital delivery.) Tj ET
+BT /F2 10 Tf 60 509 Td (Empali - Community marketplace \(web + mobile\)) Tj ET
+BT /F1 10 Tf 60 496 Td (Laravel API powering a Vue web app and a React Native mobile app.) Tj ET
+BT /F2 10 Tf 60 478 Td (QuizyPilot - AI quiz & product recommendation engine) Tj ET
+BT /F1 10 Tf 60 465 Td (NestJS backend with branching quiz logic and conversion analytics.) Tj ET
+BT /F2 10 Tf 60 447 Td (Quizell Partner Platform - SaaS partner management) Tj ET
+BT /F1 10 Tf 60 434 Td (Laravel + Vue partner dashboards, analytics, and workflow automation.) Tj ET
+BT /F2 10 Tf 60 416 Td (Stitchly - Tailor business management software) Tj ET
+BT /F1 10 Tf 60 403 Td (Customer records, measurements, and full order lifecycle automation.) Tj ET
+BT /F2 12 Tf 60 375 Td (WHAT I BUILD) Tj ET
+BT /F1 10 Tf 60 359 Td (SaaS products, marketplaces, e-commerce, custom business software,) Tj ET
+BT /F1 10 Tf 60 345 Td (API development & integrations, payment gateways, and mobile apps.) Tj ET
+BT /F1 9 Tf 60 80 Td (This is a starter resume generated with the portfolio. Replace with your full CV.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000002482 00000 n 
+0000002552 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2627
+%%EOF
