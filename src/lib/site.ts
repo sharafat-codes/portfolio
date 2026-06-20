@@ -6,7 +6,12 @@ export const siteConfig = {
     "Building scalable SaaS platforms, marketplaces, AI applications, e-commerce systems, and business automation software.",
   description:
     "Sharafat Ali is a full-stack software engineer building production-grade SaaS platforms, marketplaces, AI applications, payment systems, and business automation software with Laravel, Vue, React, Next.js, and NestJS.",
-  url: "https://sharafatali.dev",
+  // Canonical site URL. Set NEXT_PUBLIC_SITE_URL in your env (e.g. Vercel) to
+  // your real domain once it's connected. Falls back to the live Vercel URL so
+  // canonical/OG/sitemap/robots are always correct for the deployed site.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "https://portfolio-plum-theta-20.vercel.app",
   locale: "en_US",
   email: "sharafat.codes@gmail.com",
   resumeUrl: "/sharafat-ali-resume.pdf",

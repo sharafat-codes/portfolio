@@ -10,6 +10,8 @@ import { BackToTop } from "@/components/effects/back-to-top";
 import { Cursor } from "@/components/effects/cursor";
 import { siteConfig } from "@/lib/site";
 import { getAllPosts } from "@/lib/blog";
+import { siteGraph } from "@/lib/schema";
+import { JsonLd } from "@/components/shared/json-ld";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -74,29 +76,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: siteConfig.name,
-  jobTitle: siteConfig.role,
-  description: siteConfig.description,
-  url: siteConfig.url,
-  email: siteConfig.email,
-  sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
-  knowsAbout: [
-    "Laravel",
-    "PHP",
-    "Vue.js",
-    "React",
-    "Next.js",
-    "NestJS",
-    "Node.js",
-    "React Native",
-    "SaaS Development",
-    "Payment Gateway Integration",
-  ],
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const posts = getAllPosts().map((p) => ({ slug: p.slug, title: p.title }));
 
@@ -105,10 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={siteGraph()} />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

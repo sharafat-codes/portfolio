@@ -1,10 +1,12 @@
 import { ImageResponse } from "next/og";
+import { siteConfig } from "@/lib/site";
 
 export const alt = "Sharafat Ali — Full-Stack Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OpengraphImage() {
+  const displayUrl = siteConfig.url.replace(/^https?:\/\//, "");
   return new ImageResponse(
     (
       <div
@@ -48,7 +50,7 @@ export default function OpengraphImage() {
               letterSpacing: 2,
             }}
           >
-            sharafatali.dev
+            {displayUrl}
           </div>
         </div>
 

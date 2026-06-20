@@ -18,6 +18,8 @@ import { Button } from "@/components/ui/button";
 import { ProjectVisual } from "@/components/shared/project-visual";
 import { projects, getProject } from "@/lib/data/projects";
 import { siteConfig } from "@/lib/site";
+import { JsonLd } from "@/components/shared/json-ld";
+import { creativeWorkSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -57,6 +59,14 @@ export default async function ProjectPage({
 
   return (
     <article>
+      <JsonLd data={creativeWorkSchema(project)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Work", path: "/work" },
+          { name: project.name, path: `/work/${project.slug}` },
+        ])}
+      />
       {/* Header */}
       <section className="relative overflow-hidden pt-28 pb-10 sm:pt-36">
         <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>

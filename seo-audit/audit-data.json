@@ -1,0 +1,225 @@
+{
+  "summary": {
+    "health_score": 72,
+    "business_type": "Personal brand / freelance software-engineering portfolio (with blog)",
+    "audited_url": "https://portfolio-plum-theta-20.vercel.app",
+    "audit_date": "2026-06-20",
+    "pages_crawled": 13,
+    "top_findings": [
+      "CRITICAL: Canonical/OG/sitemap/robots all point to sharafatali.dev, not the live vercel.app domain",
+      "CRITICAL: og:image URL is unreachable (wrong domain) — social previews show no image",
+      "HIGH: sitemap.xml and robots.txt advertise 13 URLs on a non-resolving domain",
+      "HIGH: Animated stats render as 0 in the SSR HTML instead of 2+/5/15+/6+",
+      "MEDIUM: Testimonials are anonymized, weakening E-E-A-T trust signals"
+    ],
+    "quick_wins": [
+      "Drive site URL from NEXT_PUBLIC_SITE_URL env var (fixes canonical/OG/sitemap/robots at once)",
+      "Add llms.txt for AI-search discoverability",
+      "Render real stat values as the counter base so SSR HTML shows them",
+      "Add WebSite, BreadcrumbList, and ProfilePage JSON-LD",
+      "Set real liveUrl values on case studies"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 55,
+      "what_works": [
+        "HTTPS + HSTS (max-age 2y, includeSubDomains, preload)",
+        "All security headers present (nosniff, X-Frame-Options, Referrer-Policy, Permissions-Policy)",
+        "Static prerendering + Vercel CDN cache HIT",
+        "Clean URLs, correct robots meta (index,follow), /api disallowed, no noindex",
+        "Content fully server-rendered (not client-only SPA); all routes 200; custom 404 returns 404"
+      ],
+      "findings": [
+        {
+          "title": "Site URL mismatch across canonical / OG / sitemap / robots",
+          "severity": "Critical",
+          "description": "metadataBase = siteConfig.url = https://sharafatali.dev, but the live site is portfolio-plum-theta-20.vercel.app. Every canonical, og:url, sitemap <loc>, and robots Host/Sitemap points to the wrong (non-resolving) domain, risking non-indexation of the live pages.",
+          "recommendation": "Set url: process.env.NEXT_PUBLIC_SITE_URL ?? '<live domain>' in src/lib/site.ts and configure NEXT_PUBLIC_SITE_URL in Vercel to the final canonical domain (ideally a connected custom domain)."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 72,
+      "what_works": [
+        "Strong first-person Experience signals in case studies",
+        "Expertise demonstrated with code and trade-offs in blog",
+        "~2,000 words server-rendered on homepage; rich case-study pages",
+        "Clear authorship tied to a Person entity"
+      ],
+      "findings": [
+        {
+          "title": "Animated stats render as 0 in HTML",
+          "severity": "High",
+          "description": "Counters start at 0 and reach real values only after client JS. Crawlers/no-JS see '0+ Years building'.",
+          "recommendation": "Use the true value as the counter base and animate the displayed number, not the data."
+        },
+        {
+          "title": "Anonymized testimonials",
+          "severity": "Medium",
+          "description": "'Project Lead', 'Founder' read as placeholder and weaken trust/E-E-A-T.",
+          "recommendation": "Use real names, roles, and photos/LinkedIn links, or hide the section until available."
+        },
+        {
+          "title": "Thin blog posts",
+          "severity": "Medium",
+          "description": "Posts are ~2 min / ~500-700 words — well-written but light for competitive ranking.",
+          "recommendation": "Expand the top 2-3 target posts to 1,000-1,500 words."
+        },
+        {
+          "title": "No about/author page",
+          "severity": "Low",
+          "description": "No dedicated entity page to anchor E-E-A-T.",
+          "recommendation": "Add /about with bio, photo, credentials."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 85,
+      "what_works": [
+        "Unique descriptive titles with clean template",
+        "Meta descriptions on every page",
+        "One H1 per page with logical H2/H3 hierarchy",
+        "Strong internal linking (nav, footer, related posts)",
+        "Natural keyword alignment"
+      ],
+      "findings": [
+        {
+          "title": "Homepage title is brand-only",
+          "severity": "Low",
+          "description": "Great for branded search; could test a keyword/value variant.",
+          "recommendation": "A/B a title with target keywords once query data exists."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 70,
+      "what_works": [
+        "Valid Person schema sitewide",
+        "Valid BlogPosting on each article"
+      ],
+      "findings": [
+        {
+          "title": "Missing WebSite, BreadcrumbList, ProfilePage/Organization, CreativeWork",
+          "severity": "Medium",
+          "description": "Base schema is good but misses rich-result and entity opportunities.",
+          "recommendation": "Add WebSite + BreadcrumbList (detail pages) + ProfilePage wrapping Person; optionally CreativeWork per case study."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 88,
+      "what_works": [
+        "Static prerender + CDN cache HIT (fast TTFB)",
+        "Zero content images (no image LCP/CLS, nothing to lazy-load)",
+        "Self-hosted next/font with display:swap",
+        "Lean JS (~170KB first load), reserved space keeps CLS low",
+        "Motion gated behind prefers-reduced-motion and pointer:fine"
+      ],
+      "findings": [
+        {
+          "title": "No field (CrUX) or lab Lighthouse data captured",
+          "severity": "Info",
+          "description": "New domain, no real-user data yet; no Lighthouse run in this environment.",
+          "recommendation": "Run PageSpeed Insights on the live URL; re-check CrUX in GSC ~28 days after traffic."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 68,
+      "what_works": [
+        "Citable structure (clear headings, definitions, numbered takeaways)",
+        "Structured data gives AI engines clean entities",
+        "Content present in static HTML for non-JS AI crawlers"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt",
+          "severity": "Medium",
+          "description": "Missing the emerging AI-discoverability convention.",
+          "recommendation": "Add /public/llms.txt summarizing identity, services, key URLs."
+        },
+        {
+          "title": "New domain, no authority/mentions",
+          "severity": "Medium",
+          "description": "AI visibility tracks cross-web brand mentions.",
+          "recommendation": "Build citations: GitHub README, LinkedIn, dev.to, directories."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 80,
+      "what_works": [
+        "No <img> tags = no alt/size/format/lazy-load debt",
+        "Dynamic 1200x630 OG image via next/og"
+      ],
+      "findings": [
+        {
+          "title": "OG image URL unreachable (wrong domain)",
+          "severity": "High",
+          "description": "og:image stamped with sharafatali.dev; previews break.",
+          "recommendation": "Fixed by the site-URL change; verify with LinkedIn/X validators."
+        },
+        {
+          "title": "Decorative-only visuals limit image search",
+          "severity": "Low",
+          "description": "No real screenshots to surface in Google Images.",
+          "recommendation": "Optionally add 1-2 captioned screenshots per case study with alt text."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Today (~30 min)",
+        "items": [
+          "Reconcile site domain via NEXT_PUBLIC_SITE_URL (fixes canonical/OG/og-image/sitemap/robots)",
+          "Render real stat values in the SSR HTML"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "This week",
+        "items": [
+          "Replace anonymized testimonials with real attribution",
+          "Add llms.txt",
+          "Add WebSite + BreadcrumbList + ProfilePage schema",
+          "Set real liveUrl values on case studies",
+          "Submit sitemap + verify in Google Search Console (and Bing)"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "This month",
+        "items": [
+          "Expand top 2-3 blog posts to 1,000-1,500 words",
+          "Add an /about page",
+          "Build citation signals (GitHub, LinkedIn, dev.to, directories)",
+          "Add real screenshots per case study with alt text"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Re-check CWV field data ~4 weeks after traffic",
+          "Track GSC impressions/clicks; tune low-CTR titles",
+          "Re-run audit after Phase 1-2; set an seo-drift baseline"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

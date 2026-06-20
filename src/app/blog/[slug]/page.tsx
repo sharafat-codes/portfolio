@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { getAllPosts, getPost } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
+import { JsonLd } from "@/components/shared/json-ld";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -51,22 +53,15 @@ export default async function ArticlePage({
     .filter((p) => p.slug !== post.slug && p.category === post.category)
     .slice(0, 2);
 
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    author: { "@type": "Person", name: post.author, url: siteConfig.url },
-    keywords: post.tags.join(", "),
-    articleSection: post.category,
-  };
-
   return (
     <article className="relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      <JsonLd data={articleSchema(post)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
       />
 
       {/* header */}
